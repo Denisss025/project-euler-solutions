@@ -21,6 +21,8 @@
 
 #pragma once
 
+#include "euler001.hpp"
+
 namespace euler002 { 
 
 namespace impl {
