@@ -1,3 +1,20 @@
+/*
+ * File: solutions/euler003.hpp
+ *
+ *  Copyright (c) 2015, Denis Novikov
+ *
+ *  Created on: Mar 13, 2015
+ *      Author: Denis Novikov
+ *     Licence: GNU v.3.0
+ * Description: see https://projecteuler.net/problem=3 for details.
+ *
+ * Problem (#003):
+ * The prime factors of 13195 are 5, 7, 13 and 29.
+ *
+ * What is the largest prime factor of the number 600851475143 ?
+ * 
+ */
+
 #pragma once
 
 namespace euler003 {
