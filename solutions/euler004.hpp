@@ -19,6 +19,7 @@
 #pragma once
 
 #include <stdexcept>
+#include "euler003.hpp"
 
 namespace euler004 {
 
