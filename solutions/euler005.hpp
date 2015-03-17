@@ -18,45 +18,41 @@
 */
 #pragma once
 
+#include <cmath>
+#include <algorithm>
+#include <limits>
+#include <stdexcept>
+
+#include "euler004.hpp"
+
 namespace euler005 {
 
-namespace impl {
-    
-struct num_t {
-    unsigned value;
-    bool     used;
-    
-    auto operator ++() -> num_t& {
-        return ++value, *this;
-    }
-};
+inline static auto solution(unsigned limit) -> uint64_t {
+	if (limit < 3u) return limit;
 
-}  // namespace impl
+	std::vector<bool> v((limit - 1) * 2, true);
 
-inline static auto solution(unsigned limit) -> unsigned {
-    std::vector<impl::num_t> v(limit - 1);
-    std::iota(v.begin(), v.end(), impl::num_t{2u, true});
-    auto last = v.end();
-    auto result = 1u;
-    for (auto first = v.begin(); first != last; ++first) {
-        if (result % first->value != 0) {
-            result *= first->value;
-            for (auto it = v.begin(); it != first; ++it) {
-                if (it->used && ((result / it->value) % it->value) == 0) {
-                    result /= it->value;
-                    it->used = false;
-                }
-            }
-        } else {
-            first->used = false;
-        }
-    }
+	const auto n = v.size();
+	const auto log2Lim = std::log2l(limit);
 
-    return result;
+	auto result = static_cast<uint64_t>(std::exp2(std::floor(log2Lim)));
+
+	// Go through even numbers
+	for (auto i = 0u, num = 3u; i < n; ++i, num += 2)
+		if (v[i]) {
+			auto mul = static_cast<uint64_t>(
+				std::pow(num, std::floor(log2Lim / std::log2l(num))));
+			if (std::numeric_limits<uint64_t>::max() / mul < result)
+				throw std::overflow_error{"num: " + std::to_string(num)};
+			result *= mul;
+			for (auto j = i + num; j < n; j += num) v[j] = false;
+		}
+	
+	return result;
 }
 
-inline static auto solution() -> unsigned {
-    return solution(20u);
+inline static auto solution() -> uint64_t {
+	return solution(20u);
 }
 
 }  // namespace euler005
