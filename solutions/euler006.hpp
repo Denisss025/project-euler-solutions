@@ -26,29 +26,31 @@
 */
 #pragma once
 
+#include "euler005.hpp"
+
 namespace euler006 {
 
 namespace impl {
 
 inline constexpr static auto calcResult(uint64_t result, uint64_t lim, uint64_t mul) noexcept -> uint64_t {
-    return result * mul + ((lim & 1) == 1 ? 0u : 
-            (lim * lim * mul / 8));
+	return result * mul + ((lim & 1) == 1 ? 0u : 
+			(lim * lim * mul / 8));
 }
 
 inline constexpr static auto solution(uint64_t n, 
-        uint64_t i = 1u, uint64_t result = 0u) noexcept -> uint64_t {
-    return i >= n ? calcResult(result, n + i, 2u + 3u * (n + i)) :
-        solution(n - 1, i + 1, result + i * n);
+		uint64_t i = 1u, uint64_t result = 0u) noexcept -> uint64_t {
+	return i >= n ? calcResult(result, n + i, 2u + 3u * (n + i)) :
+			solution(n - 1, i + 1, result + i * n);
 }
 
 }  // namespace impl
 
 inline static auto solution(unsigned limit) -> uint64_t {
-    return (limit == 0u) ? 0u : impl::solution(limit - 1u);
+	return (limit == 0u) ? 0u : impl::solution(limit - 1u);
 }
 
 inline static auto solution() -> uint64_t {
-    return solution(100u);
+	return solution(100u);
 }
 
 }  // namespace euler006
