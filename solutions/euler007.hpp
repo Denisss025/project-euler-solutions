@@ -1,11 +1,11 @@
 /*
 * File: solutions/euler007.hpp
 *
-* Copyright (c) 2015, Denis Novikov
+*  Copyright (c) 2015, Denis Novikov
 *
-* Created on: Mar 20, 2015
-* Author: Denis Novikov
-* Licence: GNU v.3.0
+*  Created on: Mar 20, 2015
+*      Author: Denis Novikov
+*     Licence: GNU v.3.0
 * Description: see https://projecteuler.net/problem=7 for details.
 *
 * Problem (#007):
@@ -15,7 +15,9 @@
 * What is the 10 001st prime number?
 *
 */
-#pragma once#include <array>
+#pragma once
+
+#include <array>
 #include <vector>
 #include "euler006.hpp"
 
