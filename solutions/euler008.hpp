@@ -89,6 +89,7 @@ static inline auto solution(FwdIt first, FwdIt last, FwdIt queue_first,
 		if (queue_size > adj_num) {
 			q_front = val(queue_first);
 			++queue_first;
+			queue_size = adj_num + 1;
 		}
 		prod /= q_front;
 		prod *= c;
