@@ -40,6 +40,8 @@
 #pragma once
 
 #include <algorithm>
+#include <limits>
+#include <stdexcept>
 #include "euler007.hpp"
 
 namespace euler008 {
