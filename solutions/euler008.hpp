@@ -92,6 +92,8 @@ static inline auto solution(FwdIt first, FwdIt last, FwdIt queue_first,
 			queue_size = adj_num + 1;
 		}
 		prod /= q_front;
+		if ((std::numeric_limits<decltype(prod)>::max() / c) < prod)
+			throw std::overflow_error{"prod"};
 		prod *= c;
 
 		q_front = q_front - 1u + queue_size - adj_num;
